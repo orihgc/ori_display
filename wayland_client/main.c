@@ -13,6 +13,7 @@
 
 #include "draw_buf.h"
 #include "xdg-shell.h"
+#include "launch-setting.h"
 
 #pragma region fields
 
@@ -121,6 +122,8 @@ void registry_global_handler(void *data, struct wl_registry *registry,
   if (strcmp(interface, "org_kde_plasma_shell") == 0) {
     printf("org_kde_plasma_shell object is here.\n");
   }
+
+  
 }
 #pragma endregion
 
