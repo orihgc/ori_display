@@ -7,7 +7,6 @@
 #include <sys/mman.h>
 #include <sys/syscall.h>
 
-#include <wayland-client-core.h>
 #include <wayland-client-protocol.h>
 #include <wayland-client.h>
 #include <wayland-cursor.h>
