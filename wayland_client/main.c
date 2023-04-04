@@ -317,7 +317,7 @@ int main(int argc, char *argv[]) {
   register_pointer();
 
   obric_launch_setting_try_launch_from(
-      obric_launch_setting, OBRIC_LAUNCH_SETTING_LAUNCH_SRC_TYPE_DOCK, 169,
+      obric_launch_setting, OBRIC_LAUNCH_SETTING_LAUNCH_SRC_TYPE_DOCK, "169",
       "orihgc");
 
   config_surface();
