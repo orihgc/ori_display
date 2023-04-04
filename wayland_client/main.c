@@ -27,6 +27,7 @@ struct wl_shm *g_shm;
 struct wl_data_device_manager *g_data_device_mgr;
 struct wl_seat *g_seat;
 struct zxdg_shell_v6 *g_xdg_shell;
+struct obric_launch_setting *obric_launch_setting;
 #pragma endregion
 
 struct wl_surface *csr_sfc;
@@ -123,7 +124,14 @@ void registry_global_handler(void *data, struct wl_registry *registry,
     printf("org_kde_plasma_shell object is here.\n");
   }
 
-  
+  if (strcmp(interface, "obric_launch_setting") == 0) {
+    obric_launch_setting =
+        wl_registry_bind(registry, name, &obric_launch_setting_interface, 1);
+    if (!obric_launch_setting) {
+      printf("launch_setting object unavailable :(\n");
+      exit(1);
+    }
+  }
 }
 #pragma endregion
 
@@ -307,6 +315,10 @@ int main(int argc, char *argv[]) {
   printf("\n"); // ---------------- 分割线 ----------------
 
   register_pointer();
+
+  obric_launch_setting_try_launch_from(
+      obric_launch_setting, OBRIC_LAUNCH_SETTING_LAUNCH_SRC_TYPE_DOCK, 169,
+      "orihgc");
 
   config_surface();
 
